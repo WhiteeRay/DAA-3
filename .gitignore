@@ -15,4 +15,4 @@ bin/
 Thumbs.db
 
 
-/data/output.json
+/src/main/resources/output.json

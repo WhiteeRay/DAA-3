@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         try {
 
-            List<Graph> graphs = FileHandler.readInput("data/input.json");
+            List<Graph> graphs = FileHandler.readInput("src/main/resources/input.json");
             List<MSTResult> results = new ArrayList<>();
 
 
@@ -44,7 +44,7 @@ public class Main {
             }
 
 
-            FileHandler.writeOutput("data/output.json", results);
+            FileHandler.writeOutput("src/main/resources/output.json", results);
             System.out.println("Results written to output.json");
 
         } catch (Exception e) {
