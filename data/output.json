@@ -8,14 +8,14 @@
       },
       "prim": {
         "mst_edges": [
-          {"from": "A", "to": "C", "weight": 3},
-          {"from": "C", "to": "B", "weight": 2},
+          {"from": "B", "to": "C", "weight": 2},
+          {"from": "C", "to": "A", "weight": 3},
           {"from": "B", "to": "D", "weight": 5},
           {"from": "D", "to": "E", "weight": 6}
         ],
         "total_cost": 16,
-        "operations_count": 53,
-        "execution_time_ms": 18,52
+        "operations_count": 44,
+        "execution_time_ms": 16,12
       },
       "kruskal": {
         "mst_edges": [
@@ -26,7 +26,7 @@
         ],
         "total_cost": 16,
         "operations_count": 44,
-        "execution_time_ms": 4,53
+        "execution_time_ms": 2,57
       }
     },
     {
@@ -37,13 +37,13 @@
       },
       "prim": {
         "mst_edges": [
-          {"from": "A", "to": "B", "weight": 1},
+          {"from": "B", "to": "A", "weight": 1},
           {"from": "B", "to": "C", "weight": 2},
           {"from": "C", "to": "D", "weight": 3}
         ],
         "total_cost": 6,
-        "operations_count": 36,
-        "execution_time_ms": 0,08
+        "operations_count": 30,
+        "execution_time_ms": 0,09
       },
       "kruskal": {
         "mst_edges": [
@@ -53,7 +53,7 @@
         ],
         "total_cost": 6,
         "operations_count": 32,
-        "execution_time_ms": 0,05
+        "execution_time_ms": 0,08
       }
     }
   ]

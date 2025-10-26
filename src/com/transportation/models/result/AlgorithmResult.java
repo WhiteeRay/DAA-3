@@ -27,7 +27,7 @@ public class AlgorithmResult {
 
 
     public List<MSTEdge> getMstEdges() { return new ArrayList<>(mst_edges); }
-    public void setMst_edges(List<MSTEdge> mst_edges) { this.mst_edges = new ArrayList<>(mst_edges); }
+    public void setMstEdges(List<MSTEdge> mst_edges) { this.mst_edges = new ArrayList<>(mst_edges); }
 
     public int getTotalCost() { return total_cost; }
     public void setTotalCost(int total_cost) { this.total_cost = total_cost; }
