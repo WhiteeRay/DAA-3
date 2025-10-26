@@ -1,7 +1,5 @@
 package algorithms.impl;
 
-
-
 import algorithms.MSTAlgorithm;
 import models.graph.Edge;
 import models.graph.Graph;
@@ -12,17 +10,27 @@ import utils.UnionFind;
 
 import java.util.*;
 
+/**
+ * Kruskal's Algorithm Implementation for Minimum Spanning Tree
+ *
+ * This implementation finds the MST by:
+ * 1. Sorting all edges by weight in ascending order (with alphabetical tie-breaking for consistency)
+ * 2. Using Union-Find data structure to efficiently detect cycles during edge selection
+ * 3. Iterating through sorted edges and adding them to MST only if they connect disjoint sets
+ * 4. Continuing until we have V-1 edges (where V is number of vertices)
+ *
+ * The algorithm is ideal for sparse graphs and guarantees optimal MST construction
+ * while maintaining O(E log E) time complexity due to the sorting step.
+ */
 public class KruskalsAlgorithm implements MSTAlgorithm {
 
     @Override
-    public AlgorithmResult findMST(
-            Graph graph) {
+    public AlgorithmResult findMST(Graph graph) {
         PerformanceTracker tracker = new PerformanceTracker();
         tracker.start();
 
         AlgorithmResult result = new AlgorithmResult();
         List<MSTEdge> mstEdges = new ArrayList<>();
-
 
         List<Edge> sortedEdges = new ArrayList<>(graph.getEdges());
         sortedEdges.sort((e1, e2) -> {
@@ -48,7 +56,6 @@ public class KruskalsAlgorithm implements MSTAlgorithm {
             }
             operations++;
         }
-
 
         int totalCost = 0;
         for (MSTEdge mstEdge : mstEdges) {

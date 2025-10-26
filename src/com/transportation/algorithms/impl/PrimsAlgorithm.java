@@ -1,7 +1,5 @@
 package algorithms.impl;
 
-
-
 import algorithms.MSTAlgorithm;
 import models.graph.Edge;
 import models.graph.Graph;
@@ -9,9 +7,20 @@ import models.graph.MSTEdge;
 import models.result.AlgorithmResult;
 import utils.PerformanceTracker;
 
-
 import java.util.*;
 
+/**
+ * Prim's Algorithm Implementation for Minimum Spanning Tree
+ *
+ * This implementation finds the MST by:
+ * 1. Starting from a specific node (node "B" for consistent results) and growing the tree outward
+ * 2. Using a priority queue to always select the minimum weight edge connecting visited to unvisited nodes
+ * 3. Maintaining a visited set to track included nodes and avoid cycles
+ * 4. Adding edges in sorted order with consistent tie-breaking for reproducible results
+ *
+ * The algorithm efficiently builds the MST node by node and is particularly suitable
+ * for dense graphs, operating with O(E log V) time complexity using a binary heap.
+ */
 public class PrimsAlgorithm implements MSTAlgorithm {
 
     @Override
@@ -23,27 +32,19 @@ public class PrimsAlgorithm implements MSTAlgorithm {
         List<MSTEdge> mstEdges = new ArrayList<>();
         Set<String> visited = new HashSet<>();
 
-
         PriorityQueue<Edge> minHeap = new PriorityQueue<>((e1, e2) -> {
-
             int weightCompare = Integer.compare(e1.getWeight(), e2.getWeight());
             if (weightCompare != 0) return weightCompare;
-
-
             int fromCompare = e1.getFrom().compareTo(e2.getFrom());
             if (fromCompare != 0) return fromCompare;
-
-            // For equal 'from' nodes, compare by 'to' node alphabetically
             return e1.getTo().compareTo(e2.getTo());
         });
 
         Map<String, List<Edge>> adjList = graph.getAdjacencyList();
         int operations = 0;
 
-
         String startNode = "B";
         visited.add(startNode);
-
         List<Edge> startEdges = new ArrayList<>(adjList.get(startNode));
         startEdges.sort(Comparator.comparingInt(Edge::getWeight).thenComparing(Edge::getTo));
         minHeap.addAll(startEdges);
@@ -86,7 +87,6 @@ public class PrimsAlgorithm implements MSTAlgorithm {
                 operations += newEdges.size() + 1;
             }
         }
-
 
         int totalCost = 0;
         for (MSTEdge mstEdge : mstEdges) {
